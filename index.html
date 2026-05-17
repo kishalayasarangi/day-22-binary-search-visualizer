@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Binary Search Visualizer</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="app-title">Binary Search Visualizer</h1>
+    <p class="subtitle">Watch binary search find your number step by step</p>
+
+    <!-- CONTROLS -->
+    <div class="controls-card">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Sorted Array (comma separated)</label>
+          <input type="text" id="arrayInput" value="2, 5, 8, 12, 16, 23, 38, 45, 56, 72, 91"/>
+        </div>
+        <div class="form-group">
+          <label>Target Number</label>
+          <input type="number" id="targetInput" value="23"/>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-generate" onclick="randomArray()">↺ Random Array</button>
+        <button class="btn-search" id="searchBtn" onclick="startSearch()">▶ Start Search</button>
+        <button class="btn-step" id="stepBtn" onclick="nextStep()" disabled>→ Next Step</button>
+        <button class="btn-reset" onclick="resetSearch()">↺ Reset</button>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-box">
+        <span id="stepCount">0</span>
+        <label>Steps</label>
+      </div>
+      <div class="stat-box">
+        <span id="comparisons">0</span>
+        <label>Comparisons</label>
+      </div>
+      <div class="stat-box">
+        <span id="arraySize">0</span>
+        <label>Array Size</label>
+      </div>
+      <div class="stat-box">
+        <span id="resultStat">—</span>
+        <label>Result</label>
+      </div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend">
+      <span class="legend-item"><span class="dot left"></span>Left</span>
+      <span class="legend-item"><span class="dot mid"></span>Mid</span>
+      <span class="legend-item"><span class="dot right"></span>Right</span>
+      <span class="legend-item"><span class="dot found"></span>Found</span>
+      <span class="legend-item"><span class="dot eliminated"></span>Eliminated</span>
+    </div>
+
+    <!-- VISUALIZER -->
+    <div class="visualizer-wrap">
+      <div class="array-display" id="arrayDisplay"></div>
+      <div class="pointer-row" id="pointerRow"></div>
+    </div>
+
+    <!-- STEP LOG -->
+    <div class="log-card">
+      <h3>Step Log</h3>
+      <ul class="log-list" id="logList">
+        <li class="log-empty">Press Start Search to begin</li>
+      </ul>
+    </div>
+
+    <!-- INFO -->
+    <div class="info-card">
+      <h3>How Binary Search Works</h3>
+      <p>Binary search works on <strong>sorted arrays</strong> by repeatedly halving the search space:</p>
+      <ol>
+        <li>Find the middle element of the current range</li>
+        <li>If middle equals target → found!</li>
+        <li>If target is less than middle → search left half</li>
+        <li>If target is greater than middle → search right half</li>
+        <li>Repeat until found or range is empty</li>
+      </ol>
+      <p class="complexity">Time Complexity: <strong>O(log n)</strong> — much faster than linear search O(n)</p>
+    </div>
+
+  </div>
+
+  <footer>Day 22 of 120 · Kishalaya Sarangi · NIT Rourkela</footer>
+  <script src="script.js"></script>
+</body>
+</html>
